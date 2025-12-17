@@ -186,7 +186,9 @@ This project is available for educational and personal use.
 ## Contact
 
 For questions or support, please open an issue in the repository.
+
 email: shivamatram2002@gmail.com
+
 ---
 
 Built with ❤️ using Android Studio
