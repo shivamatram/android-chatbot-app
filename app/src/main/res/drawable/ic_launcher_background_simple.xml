@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Simple Professional Background -->
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startColor="#667eea"
+                android:centerColor="#764ba2"
+                android:endColor="#f093fb"
+                android:type="linear"
+                android:angle="135" />
+        </aapt:attr>
+    </path>
+    
+    <!-- Decorative Elements -->
+    <group android:translateX="54" android:translateY="54">
+        <!-- Outer Ring -->
+        <path android:pathData="M-40,-40 A40,40 0 1,1 40,-40 A40,40 0 1,1 -40,-40 Z M-36,-36 A36,36 0 1,0 36,-36 A36,36 0 1,0 -36,-36 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.15" />
+              
+        <!-- Inner Ring -->
+        <path android:pathData="M-30,-30 A30,30 0 1,1 30,-30 A30,30 0 1,1 -30,-30 Z M-26,-26 A26,26 0 1,0 26,-26 A26,26 0 1,0 -26,-26 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.1" />
+              
+        <!-- Corner Accents -->
+        <path android:pathData="M-45,-45 L-35,-45 L-45,-35 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.2" />
+        <path android:pathData="M45,45 L35,45 L45,35 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.2" />
+        <path android:pathData="M-45,45 L-35,45 L-45,35 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.15" />
+        <path android:pathData="M45,-45 L35,-45 L45,-35 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.15" />
+    </group>
+    
+</vector>

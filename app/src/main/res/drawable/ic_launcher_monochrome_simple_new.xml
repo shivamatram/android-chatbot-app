@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Simple Clean Monochrome Robot Icon -->
+    <group android:translateX="54" android:translateY="54">
+        
+        <!-- Simple Robot with Speech Bubble (using evenOdd fill) -->
+        <path android:pathData="M-20,-25 L20,-25 L20,-5 L-20,-5 Z M-12,-18 C-14.21,-18 -16,-16.21 -16,-14 C-16,-11.79 -14.21,-10 -12,-10 C-9.79,-10 -8,-11.79 -8,-14 C-8,-16.21 -9.79,-18 -12,-18 Z M12,-18 C9.79,-18 8,-16.21 8,-14 C8,-11.79 9.79,-10 12,-10 C14.21,-10 16,-11.79 16,-14 C16,-16.21 14.21,-18 12,-18 Z M-25,0 C-25,-10 -19,-15 -11,-15 L11,-15 C19,-15 25,-10 25,0 L25,20 C25,30 19,35 11,35 L-11,35 C-19,35 -25,30 -25,20 Z M-19,35 L-9,35 L-14,43 Z M-21,3 C-21,-5 -16,-9 -9,-9 L9,-9 C16,-9 21,-5 21,3 L21,17 C21,25 16,29 9,29 L-9,29 C-16,29 -21,25 -21,17 Z M-8,8 C-9.66,8 -11,9.34 -11,11 C-11,12.66 -9.66,14 -8,14 C-6.34,14 -5,12.66 -5,11 C-5,9.34 -6.34,8 -8,8 Z M0,8 C-1.66,8 -3,9.34 -3,11 C-3,12.66 -1.66,14 0,14 C1.66,14 3,12.66 3,11 C3,9.34 1.66,8 0,8 Z M8,8 C6.34,8 5,9.34 5,11 C5,12.66 6.34,14 8,14 C9.66,14 11,12.66 11,11 C11,9.34 9.66,8 8,8 Z"
+              android:fillColor="@android:color/system_neutral1_900"
+              android:fillType="evenOdd" />
+        
+    </group>
+    
+</vector>

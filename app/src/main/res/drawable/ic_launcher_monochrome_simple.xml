@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Monochrome Chatbot Icon -->
+    <group android:translateX="54" android:translateY="54">
+        
+        <!-- Main Chat Interface -->
+        <path android:pathData="M-28,-20 C-28,-24 -25,-27 -21,-27 L21,-27 C25,-27 28,-24 28,-20 L28,12 C28,16 25,19 21,19 L-21,19 C-25,19 -28,16 -28,12 Z"
+              android:fillColor="@android:color/system_neutral1_900"
+              android:fillAlpha="0.8" />
+              
+        <!-- Chat Header -->
+        <path android:pathData="M-28,-20 C-28,-24 -25,-27 -21,-27 L21,-27 C25,-27 28,-24 28,-20 L28,-12 L-28,-12 Z"
+              android:fillColor="@android:color/system_neutral1_900" />
+              
+        <!-- AI Brain Symbol -->
+        <path android:pathData="M-10,-8 L10,-8 L10,8 L-10,8 Z"
+              android:fillColor="@android:color/system_neutral1_0"
+              android:fillAlpha="0.9" />
+              
+        <!-- Neural Network -->
+        <path android:pathData="M-8,-6 L8,6 M8,-6 L-8,6 M-10,0 L10,0 M0,-8 L0,8"
+              android:strokeColor="@android:color/system_neutral1_900"
+              android:strokeWidth="1.5"
+              android:strokeLineCap="round" />
+              
+        <!-- Processing Nodes -->
+        <path android:pathData="M-8,-6 L-6,-6 L-6,-4 L-8,-4 Z"
+              android:fillColor="@android:color/system_neutral1_900" />
+        <path android:pathData="M6,-6 L8,-6 L8,-4 L6,-4 Z"
+              android:fillColor="@android:color/system_neutral1_900" />
+        <path android:pathData="M-8,4 L-6,4 L-6,6 L-8,6 Z"
+              android:fillColor="@android:color/system_neutral1_900" />
+        <path android:pathData="M6,4 L8,4 L8,6 L6,6 Z"
+              android:fillColor="@android:color/system_neutral1_900" />
+              
+        <!-- Central Core -->
+        <path android:pathData="M-2,-2 L2,-2 L2,2 L-2,2 Z"
+              android:fillColor="@android:color/system_neutral1_900"
+              android:fillAlpha="0.7" />
+              
+        <!-- Status Indicators -->
+        <path android:pathData="M20,-22 L24,-22 L24,-18 L20,-18 Z"
+              android:fillColor="@android:color/system_neutral1_0"
+              android:fillAlpha="0.8" />
+        <path android:pathData="M-24,-22 L-20,-22 L-20,-18 L-24,-18 Z"
+              android:fillColor="@android:color/system_neutral1_0"
+              android:fillAlpha="0.6" />
+    </group>
+    
+</vector>

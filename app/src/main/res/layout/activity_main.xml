@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_container_lowest"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <!-- App Bar Layout with Modern Material Design -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_container"
+        android:paddingTop="24dp"
+        android:fitsSystemWindows="true"
+        app:elevation="4dp">
+
+        <!-- Top App Bar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_primary"
+            app:title="AI ChatBot"
+            app:titleTextColor="@color/on_primary"
+            app:titleTextAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            app:navigationIcon="@drawable/ic_chat_bubble"
+            app:navigationIconTint="@color/on_primary">
+
+            <!-- Status Indicator -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Online Status -->
+                <View
+                    android:id="@+id/statusIndicator"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/status_online" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online"
+                    android:textColor="@color/on_primary"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <!-- Settings Menu -->
+                <ImageButton
+                    android:id="@+id/menuButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/ripple_circle"
+                    android:contentDescription="Settings"
+                    android:src="@drawable/ic_more_vert"
+                    app:tint="@color/on_primary" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <!-- Chat Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/chatInfoCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/surface_container_high"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/outline_variant"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <!-- AI Avatar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_robot"
+                        app:tint="@color/on_primary" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Chat Info -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cohere AI Assistant"
+                        android:textColor="@color/on_surface"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <TextView
+                        android:id="@+id/modelInfoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Model: command-r • Ready to help"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="sans-serif" />
+
+                </LinearLayout>
+
+                <!-- Typing Indicator -->
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/typingIndicator"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:visibility="gone"
+                    app:indicatorColor="@color/primary"
+                    app:trackColor="@color/primary_container"
+                    app:indicatorSize="24dp"
+                    app:trackThickness="3dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content Area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@drawable/gradient_background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="140dp"
+            android:paddingHorizontal="4dp">
+
+            <!-- Welcome Message Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/welcomeCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/tertiary_container"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/tertiary"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+
+                    <!-- Welcome Icon -->
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_waving_hand"
+                        app:tint="@color/on_tertiary_container"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Welcome Text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome to AI ChatBot!"
+                        android:textColor="@color/on_tertiary_container"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I'm powered by Cohere AI and ready to help you with anything!"
+                        android:textColor="@color/on_tertiary_container"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif"
+                        android:alpha="0.8" />
+
+                    <!-- Quick Actions -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipHelp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ask me anything"
+                            android:layout_marginEnd="8dp"
+                            app:chipBackgroundColor="@color/primary"
+                            app:chipStrokeColor="@color/primary"
+                            app:chipStrokeWidth="1dp"
+                            app:chipCornerRadius="16dp"
+                            android:textColor="@color/on_primary"
+                            app:chipIcon="@drawable/ic_help"
+                            app:chipIconTint="@color/on_primary" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipExamples"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Examples"
+                            app:chipBackgroundColor="@color/secondary"
+                            app:chipStrokeColor="@color/secondary"
+                            app:chipStrokeWidth="1dp"
+                            app:chipCornerRadius="16dp"
+                            android:textColor="@color/on_secondary"
+                            app:chipIcon="@drawable/ic_lightbulb"
+                            app:chipIconTint="@color/on_secondary" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Chat Messages Container -->
+            <LinearLayout
+                android:id="@+id/chatContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_chat_empty"
+                    app:tint="@color/outline"
+                    android:alpha="0.6"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No messages yet"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start a conversation by typing a message below"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    android:textAlignment="center"
+                    android:fontFamily="sans-serif"
+                    android:alpha="0.7" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Input Area -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/inputCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/surface_container_highest"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/outline_variant"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <!-- Suggestions Chips (Initially Hidden) -->
+            <HorizontalScrollView
+                android:id="@+id/suggestionsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:scrollbars="none"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/suggestionsChipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSuggestion1"
+                        style="@style/Widget.App.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tell me a joke" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSuggestion2"
+                        style="@style/Widget.App.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explain quantum physics" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSuggestion3"
+                        style="@style/Widget.App.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Write a poem" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSuggestion4"
+                        style="@style/Widget.App.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Help with coding" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+            <!-- Input Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/surface_container_low"
+                android:elevation="4dp">
+
+                <!-- Attachment Button -->
+                <ImageButton
+                    android:id="@+id/attachButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/ripple_circle"
+                    android:contentDescription="Attach file"
+                    android:src="@drawable/ic_attach"
+                    app:tint="@color/on_surface_variant"
+                    android:layout_marginEnd="12dp"
+                    android:padding="8dp" />
+
+                <!-- Text Input Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@color/surface_container_highest"
+                    app:boxStrokeColor="@color/outline_variant"
+                    app:boxStrokeWidth="1dp"
+                    app:boxCornerRadiusTopStart="20dp"
+                    app:boxCornerRadiusTopEnd="20dp"
+                    app:boxCornerRadiusBottomStart="20dp"
+                    app:boxCornerRadiusBottomEnd="20dp"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Type your message..."
+                        android:textColor="@color/on_surface"
+                        android:textColorHint="@color/on_surface_variant"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"
+                        android:background="@android:color/transparent"
+                        android:maxLines="4"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:imeOptions="actionSend"
+                        android:padding="16dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Voice Input Button -->
+                <ImageButton
+                    android:id="@+id/voiceButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/ripple_circle"
+                    android:contentDescription="Voice input"
+                    android:src="@drawable/ic_mic"
+                    app:tint="@color/on_surface_variant"
+                    android:layout_marginEnd="12dp"
+                    android:padding="8dp" />
+
+                <!-- Send Button -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/sendButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Send message"
+                    android:src="@drawable/ic_send"
+                    app:tint="@color/on_primary"
+                    app:backgroundTint="@color/primary"
+                    app:elevation="6dp"
+                    app:fabSize="mini"
+                    app:rippleColor="@color/primary_container" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Floating Action Button for Quick Actions -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/quickActionsFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="100dp"
+        android:text="Quick Actions"
+        android:textColor="@color/on_secondary_container"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-medium"
+        app:icon="@drawable/ic_flash"
+        app:iconTint="@color/on_secondary_container"
+        app:backgroundTint="@color/secondary_container"
+        app:elevation="6dp"
+        app:rippleColor="@color/secondary"
+        app:cornerRadius="20dp"
+        android:visibility="gone"
+        android:alpha="0.95" />
+
+    <!-- Snackbar Container -->
+    <View
+        android:id="@+id/snackbarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

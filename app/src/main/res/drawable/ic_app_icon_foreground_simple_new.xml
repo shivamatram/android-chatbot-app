@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Professional Chatbot Icon -->
+    <group android:translateX="54" android:translateY="54">
+        
+        <!-- Main Chat Bubble -->
+        <path android:pathData="M-24,-18 C-24,-22 -21,-25 -17,-25 L17,-25 C21,-25 24,-22 24,-18 L24,8 C24,12 21,15 17,15 L-7,15 L-17,23 L-17,15 C-20.5,15 -24,11.5 -24,8 Z"
+              android:fillColor="#FFFFFF"
+              android:fillAlpha="0.95" />
+              
+        <!-- AI Brain Symbol -->
+        <path android:pathData="M-8,-8 L8,-8 L8,8 L-8,8 Z"
+              android:fillColor="#1976D2" />
+              
+        <!-- Neural Network Lines -->
+        <path android:pathData="M-6,-6 L6,6 M6,-6 L-6,6 M-8,0 L8,0 M0,-8 L0,8"
+              android:strokeColor="#FFFFFF"
+              android:strokeWidth="1.5"
+              android:strokeLineCap="round" />
+              
+        <!-- Data Processing Nodes -->
+        <path android:pathData="M-6,-6 L-4,-6 L-4,-4 L-6,-4 Z"
+              android:fillColor="#FFFFFF" />
+        <path android:pathData="M4,-6 L6,-6 L6,-4 L4,-4 Z"
+              android:fillColor="#FFFFFF" />
+        <path android:pathData="M-6,4 L-4,4 L-4,6 L-6,6 Z"
+              android:fillColor="#FFFFFF" />
+        <path android:pathData="M4,4 L6,4 L6,6 L4,6 Z"
+              android:fillColor="#FFFFFF" />
+              
+        <!-- Central Core -->
+        <path android:pathData="M-2,-2 L2,-2 L2,2 L-2,2 Z"
+              android:fillColor="#FFD54F" />
+              
+        <!-- Message Indicators -->
+        <path android:pathData="M18,-20 L22,-20 L22,-16 L18,-16 Z"
+              android:fillColor="#4CAF50" />
+        <path android:pathData="M19,-19 L21,-19 L21,-17 L19,-17 Z"
+              android:fillColor="#FFFFFF" />
+              
+        <!-- Typing Dots -->
+        <path android:pathData="M-20,18 L-18,18 L-18,20 L-20,20 Z"
+              android:fillColor="#FF9800" />
+        <path android:pathData="M-16,18 L-14,18 L-14,20 L-16,20 Z"
+              android:fillColor="#FF9800"
+              android:fillAlpha="0.7" />
+        <path android:pathData="M-12,18 L-10,18 L-10,20 L-12,20 Z"
+              android:fillColor="#FF9800"
+              android:fillAlpha="0.4" />
+    </group>
+    
+</vector>
